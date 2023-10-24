@@ -1,6 +1,6 @@
 # Ciepło właściwe
 
-![GitHub](https://img.shields.io/github/license/Diratix/Cieplo-Mieszaniny)
+[![License: MIT]([https://img.shields.io/badge/License-GPLv3-blue.svg](https://img.shields.io/badge/License-MIT-red.svg))](LICENSE)
 
 Author: [Daniel Pawelec](https://github.com/Diratix)
 
