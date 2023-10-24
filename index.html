@@ -65,6 +65,33 @@
             if (isNaN(m1) || isNaN(t1) || isNaN(m2) || isNaN(t2)) {
                 document.getElementById("wynik").innerHTML = "Wprowadź poprawne dane.";
                 return;
+            } else if (m1 < 1 || m2 < 1) {
+                document.getElementById("wynik").innerHTML = "Wprowadź poprawne dane.";
+                return;
+            } else if ( jednostkaTemp1 === 'C' && t1 < 0) {
+                document.getElementById("wynik").innerHTML = "Wprowadź poprawne dane.";
+                return;
+            } else if ( jednostkaTemp1 === 'C' && t1 > 100) {
+                document.getElementById("wynik").innerHTML = "Wprowadź poprawne dane.";
+                return;
+            } else if ( jednostkaTemp1 === 'K' && t1 < 273.15) {
+                document.getElementById("wynik").innerHTML = "Wprowadź poprawne dane.";
+                return;
+            } else if ( jednostkaTemp1 === 'K' && t1 > 373.15) {
+                document.getElementById("wynik").innerHTML = "Wprowadź poprawne dane.";
+                return;
+            } else if ( jednostkaTemp2 === 'C' && t2 < 0) {
+                document.getElementById("wynik").innerHTML = "Wprowadź poprawne dane.";
+                return;
+            } else if ( jednostkaTemp2 === 'C' && t2 > 100) {
+                document.getElementById("wynik").innerHTML = "Wprowadź poprawne dane.";
+                return;
+            } else if ( jednostkaTemp2 === 'K' && t2 < 273.15) {
+                document.getElementById("wynik").innerHTML = "Wprowadź poprawne dane.";
+                return;
+            } else if ( jednostkaTemp2 === 'K' && t2 > 373.15) {
+                document.getElementById("wynik").innerHTML = "Wprowadź poprawne dane.";
+                return;
             }
 
             // Konwersja jednostek na litry i kelwiny
