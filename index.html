@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Daniel Pawelec">
+    <title>Ciepło właściwe</title>
+    <style>
+        body {
+            background-color: #121212; /* Tło ciemne */
+            color: #ffffff; /* Kolor tekstu jasny */
+        }
+        h1, h2 {
+            color: #64B5F6; /* Kolor nagłówków */
+        }
+        input, select, button {
+            background-color: #424242; /* Tło pól wejściowych i przycisku */
+            color: #ffffff; /* Kolor tekstu w polach wejściowych i przycisku */
+            border: none;
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+        }
+        #wynik {
+            color: #64B5F6; /* Kolor wyniku */
+        }
+    </style>
+</head>
+<body>
+    <h1><b>Program liczący temperature mieszaniny wody</b></h1>
+    <h2><b>Dane:</b></h2>
+    Masa chłodnej wody: <input type="text" id="m1">
+    <select id="jednostkaMasy">
+        <option value="l">Litrów</option>
+        <option value="kg">Kilogramów</option>
+    </select><br>
+    Temperatura chłodnej wody: <input type="text" id="t1">
+    <select id="jednostkaTemp1">
+        <option value="C">Stopni Celsjusza</option>
+        <option value="K">Kelwinów</option>
+    </select><br>
+    Masa ciepłej wody: <input type="text" id="m2">
+    <select id="jednostkaMasy2">
+        <option value="l">Litrów</option>
+        <option value="kg">Kilogramów</option>
+    </select><br>
+    Temperatura ciepłej wody: <input type="text" id="t2">
+    <select id="jednostkaTemp2">
+        <option value="C">Stopni Celsjusza</option>
+        <option value="K">Kelwinów</option>
+    </select><br>
+    <button onclick="obliczCieplo()">Oblicz ciepło</button>
+    <h2><div id="wynik"><b>Wynik: </b></div></h2>
+
+    <script>
+        function obliczCieplo() {
+            var m1 = parseFloat(document.getElementById("m1").value);
+            var jednostkaMasy = document.getElementById("jednostkaMasy").value;
+            var t1 = parseFloat(document.getElementById("t1").value);
+            var jednostkaTemp1 = document.getElementById("jednostkaTemp1").value;
+            var m2 = parseFloat(document.getElementById("m2").value);
+            var jednostkaMasy2 = document.getElementById("jednostkaMasy2").value;
+            var t2 = parseFloat(document.getElementById("t2").value);
+            var jednostkaTemp2 = document.getElementById("jednostkaTemp2").value;
+
+            if (isNaN(m1) || isNaN(t1) || isNaN(m2) || isNaN(t2)) {
+                document.getElementById("wynik").innerHTML = "Wprowadź poprawne dane.";
+                return;
+            }
+
+            // Konwersja jednostek na litry i kelwiny
+            if (jednostkaMasy === "kg") {
+                m1 *= 1000;  // Zamiana kilogramów na grama
+            }
+            if (jednostkaMasy2 === "kg") {
+                m2 *= 1000;  // Zamiana kilogramów na grama
+            }
+            if (jednostkaTemp1 === "C") {
+                t1 += 273.15;  // Zamiana stopni Celsjusza na Kelwiny
+            }
+            if (jednostkaTemp2 === "C") {
+                t2 += 273.15;  // Zamiana stopni Celsjusza na Kelwiny
+            }
+
+            // Obliczenie ciepła mieszanki w Kelwinach
+            var cieploMieszankiKelvin = (m1 * t1 + m2 * t2) / (m1 + m2);
+
+            // Konwersja wyniku na stopnie Celsjusza
+            var cieploMieszankiCelsius = cieploMieszankiKelvin - 273.15;
+
+            document.getElementById("wynik").innerHTML = "Ciepło mieszanki w Kelwinach: " + cieploMieszankiKelvin.toFixed(2) + " K<br>Ciepło mieszanki w stopniach Celsjusza: " + cieploMieszankiCelsius.toFixed(2) + " °C";
+        }
+    </script>
+</body>
+</html>
